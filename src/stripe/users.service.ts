@@ -13,7 +13,7 @@ export class UsersService {
     private stripeService: StripeService
   ) { }
 
-  async create(userData: CreateUserDto) {
+  async createUser(userData: CreateUserDto) {
     const stripeCustomer = await this.stripeService.createCustomer(userData.name, userData.email);
 
     const newUser = this.usersRepository.create({ ...userData, stripeCustomerId: stripeCustomer.id });
